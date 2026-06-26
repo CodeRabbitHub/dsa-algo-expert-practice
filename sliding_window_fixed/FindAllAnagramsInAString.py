@@ -1,4 +1,10 @@
-def find_all_anagrams_in_a_string(s, p):
+def find_all_anagrams_in_a_string(s: str, p: str) -> list[int]:
+    """
+    Given two strings s and p, return an array of all the start indices of p's anagrams in s.
+    
+    Time Complexity: O(len(s))
+    Space Complexity: O(1) since the alphabet size is constant (26 lowercase English letters).
+    """
     if len(s) < len(p):
         return []
         
@@ -33,3 +39,20 @@ def find_all_anagrams_in_a_string(s, p):
             result.append(left)
             
     return result
+
+if __name__ == '__main__':
+    # Test cases
+    print("Running tests for Find All Anagrams in a String...")
+    
+    # Example 1
+    assert find_all_anagrams_in_a_string("cbaebabacd", "abc") == [0, 6], "Failed Example 1"
+    
+    # Example 2
+    assert find_all_anagrams_in_a_string("abab", "ab") == [0, 1, 2], "Failed Example 2"
+    
+    # Custom test cases
+    assert find_all_anagrams_in_a_string("a", "b") == [], "Failed Custom 1: single character mismatch"
+    assert find_all_anagrams_in_a_string("a", "a") == [0], "Failed Custom 2: single character match"
+    assert find_all_anagrams_in_a_string("ab", "abc") == [], "Failed Custom 3: s shorter than p"
+    
+    print("All tests passed successfully!")
